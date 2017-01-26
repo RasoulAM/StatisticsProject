@@ -25,6 +25,7 @@
  ******************************************************************************/
 
 import java.util.Arrays;
+import java.util.Scanner;
 import java.util.Stack;
 
 
@@ -136,16 +137,19 @@ public class GrahamScan {
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
-        int n = StdIn.readInt();
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
         Point2D[] points = new Point2D[n];
         for (int i = 0; i < n; i++) {
-            int x = StdIn.readInt();
-            int y = StdIn.readInt();
+            int x = scanner.nextInt();
+            int y = scanner.nextInt();
             points[i] = new Point2D(x, y);
         }
         GrahamScan graham = new GrahamScan(points);
-        for (Point2D p : graham.hull())
-            StdOut.println(p);
+        System.out.println(graham.isConvex());
+        for (Point2D p : graham.hull()){
+            System.out.println(p);
+        }
     }
 
 }
